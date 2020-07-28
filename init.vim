@@ -116,6 +116,7 @@ noremap S :w<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
+noremap <LEADER>src :source ~/.config/nvim/init.vim<CR>
 
 " Open Startify
 "noremap <LEADER>st :Startify<CR>
