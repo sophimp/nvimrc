@@ -1,11 +1,11 @@
 
-"	 ____              _     _                 _     
+"	 ____			  _	 _				 _	 
 "	/ ___|  ___  _ __ | |__ (_)_ __ ___  _ __ ( )___ 
 "	\___ \ / _ \| '_ \| '_ \| | '_ ` _ \| '_ \|// __|
 "	 ___) | (_) | |_) | | | | | | | | | | |_) | \__ \
 "	|____/ \___/| .__/|_| |_|_|_| |_| |_| .__/  |___/
-"				|_|                     |_|          
-"				_                    
+"				|_|					 |_|		  
+"				_					
 "	 _ ____   _(_)_ __ ___  _ __ ___ 
 "	| '_ \ \ / / | '_ ` _ \| '__/ __|
 "	| | | \ V /| | | | | | | | | (__ 
@@ -36,8 +36,8 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set autoindent
-set list
-set listchars=tab:\|\ ,trail:▫
+"set list
+"set listchars=tab:\|\ ,trail:▫
 set scrolloff=4
 set ttimeoutlen=0
 set notimeout
@@ -50,7 +50,7 @@ set foldlevel=99
 set foldenable
 set formatoptions-=tc
 set splitright
-set splitbelow
+set " splitbelow
 set noshowmode
 set showcmd
 set wildmenu
@@ -120,5 +120,75 @@ noremap <LEADER>src :source ~/.config/nvim/init.vim<CR>
 
 " Open Startify
 "noremap <LEADER>st :Startify<CR>
+
+"----------------------------------------------------------------------
+" window control
+"----------------------------------------------------------------------
+noremap <silent><space>= :resize +3<cr>
+noremap <silent><space>- :resize -3<cr>
+noremap <silent><space>, :vertical resize -3<cr>
+noremap <silent><space>. :vertical resize +3<cr>
+
+nnoremap <silent><c-w><c-e> :ExpSwitch edit<cr>
+nnoremap <silent><c-w>e :ExpSwitch edit<cr>
+nnoremap <silent><c-w>m :ExpSwitch vs<cr>
+nnoremap <silent><c-w>M :ExpSwitch tabedit<cr>
+
+noremap <silent><space>hh :nohl<cr>
+noremap <silent><bs> :nohl<cr>:redraw!<cr>
+noremap <silent><tab>, :call Tab_MoveLeft()<cr>
+noremap <silent><tab>. :call Tab_MoveRight()<cr>
+noremap <silent><tab>6 :VinegarOpen leftabove vs<cr>
+noremap <silent><tab>7 :VinegarOpen vs<cr>
+noremap <silent><tab>8 :VinegarOpen belowright sp<cr>
+noremap <silent><tab>9 :VinegarOpen tabedit<cr>
+noremap <silent><tab>0 :exe "NERDTree ".fnameescape(expand("%:p:h"))<cr>
+noremap <silent><tab>y :exe "NERDTree ".fnameescape(vimmake#get_root("%"))<cr>
+noremap <silent><tab>g <c-w>p
+
+" Copy to system clipboard
+vnoremap Y "+y
+
+" Search
+noremap <LEADER><CR> :nohlsearch<CR>
+
+" Adjacent duplicate words
+noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
+
+" Space to Tab
+nnoremap <LEADER>tt :%s/	/\t/g
+vnoremap <LEADER>tt :s/	/\t/g
+
+" Open up lazygit
+noremap \g :Git 
+noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
+nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
+
+source $XDG_CONFIG_HOME/nvim/cursor.vim
+
+" ===
+" === Insert Mode Cursor Movement
+" ===
+inoremap <C-a> <ESC>A
+
+" ===
+" === Command Mode Cursor Movement
+" ===
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+
+" ===
+" === Window management
+" ===
+" Use <space> + new arrow keys for moving the cursor around windows
+noremap <tab>h <C-w>h
+noremap <tab>k <C-w>k
+noremap <tab>j <C-w>j
+noremap <tab>l <C-w>l
 
 
