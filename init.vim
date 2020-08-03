@@ -44,23 +44,35 @@ set notimeout
 set viewoptions=cursor,folds,slash,unix
 set wrap
 set tw=0
+" ? 
 set indentexpr=
+" ?
 set foldmethod=indent
 set foldlevel=99
 set foldenable
+" ?
 set formatoptions-=tc
+" ?
 set splitright
-set " splitbelow
+set splitbelow
+" ?
 set noshowmode
+" ?
 set showcmd
+" ?
 set wildmenu
 set ignorecase
 set smartcase
+" ?
 set shortmess+=c
+" ?
 set inccommand=split
 set completeopt=longest,noinsert,menuone,noselect,preview
+" ?
 set ttyfast "should make scrolling faster
+" ?
 set lazyredraw "same as above
+" ?
 set visualbell
 silent !mkdir -p ~/.config/nvim/tmp/backup
 silent !mkdir -p ~/.config/nvim/tmp/undo
@@ -71,10 +83,12 @@ if has('persistent_undo')
 	set undofile
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
-set colorcolumn=100
+"set colorcolumn=100
 set updatetime=1000
+" ?
 set virtualedit=block
 
+" ?
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
@@ -164,12 +178,8 @@ noremap \g :Git
 noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
-source $XDG_CONFIG_HOME/nvim/cursor.vim
-
-" ===
-" === Insert Mode Cursor Movement
-" ===
-inoremap <C-a> <ESC>A
+"?
+source ~/.config/nvim/cursor.vim
 
 " ===
 " === Command Mode Cursor Movement
@@ -180,7 +190,6 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
-cnoremap <M-b> <S-Left>
 
 " ===
 " === Window management
@@ -191,4 +200,11 @@ noremap <tab>k <C-w>k
 noremap <tab>j <C-w>j
 noremap <tab>l <C-w>l
 
+" ===
+" === Markdown Settings
+" ===
+" Snippets
+source ~/.config/nvim/md-snippets.vim
+" auto spell
+" autocmd BufRead,BufNewFile *.md setlocal spell
 
